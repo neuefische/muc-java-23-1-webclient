@@ -1,5 +1,6 @@
 package de.grilborzer.webclientexample.service;
 
+import de.grilborzer.webclientexample.model.CharacterStatus;
 import de.grilborzer.webclientexample.model.RickAndMortyApiCharacter;
 import de.grilborzer.webclientexample.model.RickAndMortyApiResponse;
 import org.springframework.stereotype.Service;
@@ -31,8 +32,9 @@ public class RickAndMortyApiService {
         List<RickAndMortyApiCharacter> allCharacters = getAllCharacters();
         List<RickAndMortyApiCharacter> charactersAlive = new ArrayList<>();
 
+
         for (RickAndMortyApiCharacter character: allCharacters) {
-            if (character.status().equals("Alive")) {
+            if (character.status().equals(CharacterStatus.ALIVE.status())) {
                 charactersAlive.add(character);
             }
         }
