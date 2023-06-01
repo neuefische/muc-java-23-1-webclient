@@ -5,6 +5,7 @@ import de.grilborzer.webclientexample.model.RickAndMortyApiResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,8 +22,21 @@ public class RickAndMortyApiService {
                         .block())
                 .getBody();
 
-        
+
         assert responseEntity != null;
         return responseEntity.results();
+    }
+
+    public List<RickAndMortyApiCharacter> getAllCharactersAlive() {
+        List<RickAndMortyApiCharacter> allCharacters = getAllCharacters();
+        List<RickAndMortyApiCharacter> charactersAlive = new ArrayList<>();
+
+        for (RickAndMortyApiCharacter character: allCharacters) {
+            if (character.status().equals("Alive")) {
+                charactersAlive.add(character);
+            }
+        }
+
+        return charactersAlive;
     }
 }

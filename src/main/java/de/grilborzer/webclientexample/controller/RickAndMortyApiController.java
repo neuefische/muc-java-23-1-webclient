@@ -22,4 +22,9 @@ public class RickAndMortyApiController {
     public List<RickAndMortyApiCharacter> getAllCharacters() {
         return rickAndMortyApiService.getAllCharacters();
     }
+
+    @GetMapping("/characters/alive")
+    public List<RickAndMortyApiCharacter> getAllCharactersAlive() {
+        return rickAndMortyApiService.getAllCharactersAlive();
+    }
 }
