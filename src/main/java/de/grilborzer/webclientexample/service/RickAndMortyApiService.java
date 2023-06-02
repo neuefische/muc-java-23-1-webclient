@@ -30,8 +30,6 @@ public class RickAndMortyApiService {
                 .uri("/character")
                 .retrieve()
                 .toEntity(RickAndMortyApiResponse.class)
-//                        .retryWhen(Retry.max(5))
-//                        .timeout(Duration.ofSeconds(2))
                 .block()
                 .getBody();
 
