@@ -1,6 +1,7 @@
 package de.grilborzer.webclientexample.service;
 
 import de.grilborzer.webclientexample.model.student.Student;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -10,13 +11,19 @@ import java.util.Objects;
 @Service
 public class StudentApiService {
 
-    private final WebClient webClient = WebClient.create("http://localhost:8080/api/students");
+    private final WebClient webClient;
+
+    public StudentApiService(
+            @Value("${studentserver.url.local}")
+            String webclientUrl) {
+        webClient = WebClient.create(webclientUrl);
+    }
+
 
     public Student sendPost(Student student) {
         return Objects.requireNonNull(this.webClient.post()
                         .bodyValue(student)
                         .retrieve()
-//                .bodyToMono(Student.class) // Auch möglich
                         .toEntity(Student.class)
                         .block())
                 .getBody();
