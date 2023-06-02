@@ -23,6 +23,11 @@ public class RickAndMortyApiController {
         return rickAndMortyApiService.getAllCharacters();
     }
 
+    @GetMapping("/characters/random")
+    public RickAndMortyApiCharacter getRandomCharacter() {
+        return rickAndMortyApiService.getRandomCharacter();
+    }
+
     @GetMapping("/characters/alive")
     public List<RickAndMortyApiCharacter> getAllCharactersAlive() {
         return rickAndMortyApiService.getAllCharactersAlive();
