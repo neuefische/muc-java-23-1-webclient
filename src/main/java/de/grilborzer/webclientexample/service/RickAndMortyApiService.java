@@ -55,6 +55,19 @@ public class RickAndMortyApiService {
         return getRandomElementFromList(allCharacters);
     }
 
+    public int getSpeciesStatistic(String species) {
+        List<RickAndMortyApiCharacter> allCharacters = getAllCharacters();
+        int speciesCount = 0;
+
+        for (RickAndMortyApiCharacter character : allCharacters) {
+            if (character.species().toLowerCase().equals(species.toLowerCase())) {
+                speciesCount++;
+            }
+        }
+
+        return speciesCount;
+    }
+
     private static RickAndMortyApiCharacter getRandomElementFromList(List<RickAndMortyApiCharacter> characterList) {
         // Create a new Random object
         Random random = new Random();
