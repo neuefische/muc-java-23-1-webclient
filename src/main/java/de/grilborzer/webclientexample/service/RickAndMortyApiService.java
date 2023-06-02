@@ -1,8 +1,8 @@
 package de.grilborzer.webclientexample.service;
 
-import de.grilborzer.webclientexample.model.CharacterStatus;
-import de.grilborzer.webclientexample.model.RickAndMortyApiCharacter;
-import de.grilborzer.webclientexample.model.RickAndMortyApiResponse;
+import de.grilborzer.webclientexample.model.rickandmorty.CharacterStatus;
+import de.grilborzer.webclientexample.model.rickandmorty.RickAndMortyApiCharacter;
+import de.grilborzer.webclientexample.model.rickandmorty.RickAndMortyApiResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -23,7 +23,6 @@ public class RickAndMortyApiService {
                         .block())
                 .getBody();
 
-
         assert responseEntity != null;
         return responseEntity.results();
     }
@@ -41,4 +40,5 @@ public class RickAndMortyApiService {
 
         return charactersAlive;
     }
+
 }

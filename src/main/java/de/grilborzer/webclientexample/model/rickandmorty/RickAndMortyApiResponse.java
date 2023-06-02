@@ -1,4 +1,4 @@
-package de.grilborzer.webclientexample.model;
+package de.grilborzer.webclientexample.model.rickandmorty;
 
 import java.util.List;
 
